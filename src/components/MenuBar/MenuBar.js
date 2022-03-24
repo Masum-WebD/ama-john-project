@@ -5,22 +5,25 @@ import './MenuBar.css'
 
 const MenuBar = () => {
     return (
-        <nav className="navbar navbar-expand-lg header-nav">
+        <nav className="navbar navbar-expand-lg navbar-light header-nav">
         <div className="container">
-         <img src={logo} alt="" />
+        <a class="navbar-brand" href="logo">
+        <img  src={logo} alt="" />
+        </a>
+         
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+          <div className="collapse navbar-collapse d-flex justify-content-end " id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link text-white item-menu" aria-current="page" href="home">Order</a>
+              <li className="nav-item active ">
+                <a className="nav-link text-white item-menu " aria-current="page" href="/home">Order</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white item-menu" href="features">Order review</a>
+                <a className="nav-link text-white item-menu" href="/features">Order review</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white item-menu" href="pricing">Manage inventory</a>
+                <a className="nav-link text-white item-menu" href="/pricing">Manage inventory</a>
               </li>
             </ul>
           </div>
