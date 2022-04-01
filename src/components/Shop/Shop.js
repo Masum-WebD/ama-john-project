@@ -1,34 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import useProducts from '../../Hooks/useProducts';
 import { addToDb, getStorageAdd } from '../../utilities/fakedb';
+import useCart from '../../Hooks/useCart';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
-    const [products,setProducts] = useState([])
-    const [cart,setCart] = useState([])
+    const [products,setProducts] = useProducts()
+    const [cart , setCart]=useCart(products)
+
+   
   
-    useEffect(() =>{
-        fetch('products.json')
-        .then(res => res.json())
-        .then(data =>setProducts(data))
-    },[])
-    useEffect(() =>{
-        const shoredCart= getStorageAdd()
-        const saveCart=[]
-        for (const id in shoredCart) {
-           const addedCart = products.find(product => product.id === id)
-           
-          if(addedCart){
-              const quantity=shoredCart[id]
-              addedCart.quantity=quantity
-              saveCart.push(addedCart)
+ 
 
-          }
-        }
-        setCart(saveCart)
-
-    },[products])
     const handelToCart =(selectedProduct) =>{
         let newCart =[]
         const exists=cart.find(product => product.id === selectedProduct.id)
@@ -53,7 +38,11 @@ const Shop = () => {
              }
            </div>
            <div className="col-md-2 col-4 cart-detelais">
-              <Cart cart={cart}></Cart>
+              <Cart cart={cart}>
+                  <Link to='/order'>
+                    <button>Review Order</button>
+                  </Link>
+              </Cart>
 
            </div>
         </div>
